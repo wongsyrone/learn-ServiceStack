@@ -1,0 +1,21 @@
+--- ServiceStack.Interfaces.il	2022-10-14 23:00:16.232661800 +0800
++++ ServiceStack.Interfaces.nosig.il	2022-10-14 23:30:50.246112200 +0800
+@@ -66,17 +66,7 @@
+                                                                                                  63 6F 6D 2F 53 65 72 76 69 63 65 53 74 61 63 6B   // com/ServiceStack
+                                                                                                  2F 53 65 72 76 69 63 65 53 74 61 63 6B 2E 67 69   // /ServiceStack.gi
+                                                                                                  74 00 00 )                                        // t..
+-  .publickey = (00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00   // .$..............
+-                00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00   // .$..RSA1........
+-                C9 B0 4A 05 FF 76 A8 E7 D4 91 05 24 66 9D 64 B8   // ..J..v.....$f.d.
+-                0A EC 1A C2 2F D9 8C FB AD C3 14 C1 C6 71 6B 22   // ..../........qk"
+-                A2 E7 75 2C 70 45 57 AC 70 7E DB 1F 42 D8 34 99   // ..u,pEW.p~..B.4.
+-                9F 91 2D B4 4D A4 63 2B 28 18 ED CF F8 5A 95 6B   // ..-.M.c+(....Z.k
+-                A3 B3 DD 0E 97 E2 EF 9E 63 8F 6A E0 69 23 A9 DA   // ........c.j.i#..
+-                DF 85 EA AB ED F0 E1 87 B7 A8 83 51 7D A7 06 37   // ...........Q}..7
+-                10 D3 6D 98 60 BC 4D F4 FE 25 DF 7A C3 C6 33 84   // ..m.`.M..%.z..3.
+-                E8 56 94 3E 70 0D 63 5A 6F 80 4D 74 2C F6 E7 AC ) // .V.>p.cZo.Mt,...
+-  .hash algorithm 0x00008004
++
+   .ver 5:0:0:0
+ }
+ .module ServiceStack.Interfaces.dll

@@ -1,0 +1,49 @@
+How to crack
+
+use dnSpy to modify LicenseUtils from ServiceStack.Text.dll
+
+then decompile use ildasm
+
+====================================================================================
+
+How to generate assembly without strong name signature
+
+ilasm ServiceStack.Text.nosig.il /res:ServiceStack.Text.res /dll /out:ServiceStack.Text.nosig.dll
+sn -vf ServiceStack.Text.nosig.dll
+
+=====================================================================================
+
+How to re-sign Strong Name Assembly
+
+ildasm ServiceStack.Text.dll /out:ServiceStack.Text.il
+ilasm ServiceStack.Text.il /res:ServiceStack.Text.res /dll /key:servicestack-all.snk /out:ServiceStack.Text.signed.dll
+sn -vf ServiceStack.Text.signed.dll
+
+=====================================================================================
+If ILASM problem when dealing with double NaN and Inf
+
+https://stackoverflow.com/questions/66282361/ilasm-problem-when-dealing-with-double-nan-and-inf
+
+I create a simple program with a double type value initialized,
+
+var a = double.NaN;
+
+I build the project with Visual Studio 2019, .net framework 4.5 and disassemble it into a .il file using ILDASM.exe Version 4.0.30319.0
+
+IL_0001: ldc.r8 -nan(ind)
+
+but there is an error when I try to assemble it using ILASM.exe Version 4.8.3752.0
+
+test.il(65) : error : syntax error at token '-' in: IL_0001: ldc.r8 -nan(ind)
+
+This happened to Double.PositiveInfinity and Double.NegativeInfinity too. Anyone can help?
+------------------------
+I found the error reason from https://developercommunity.visualstudio.com/t/ildasmexe-regression-with-infinum-floating-point-v/545431
+
+and the simple solution is just to replace the:
+  FROM ->  TO
+ldc.r8 -nan(ind) -> ldc.r8 (00 00 00 00 00 00 F8 FF)
+
+ldc.r8 inf -> ldc.r8 (00 00 00 00 00 00 F0 7F)
+
+ldc.r8 -inf -> ldc.r8 (00 00 00 00 00 00 F0 FF)
